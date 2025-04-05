@@ -7,14 +7,19 @@ conexao = sqlite3.connect(database = 'base.db',
 
 cursor = conexao.cursor()
 
-cursor.execute(''' 
-CREATE TABLE IF NOT EXISTS Usuarios (
+cursor.execute('''
+             CREATE TABLE IF NOT EXISTS Usuarios (
                id INTEGER PRIMARY KEY AUTOINCREMENT,
-               nome TEXT NOT NULL,
-               email TEXT
-               'Num Telefone' TEXT
-               Prosissão TEXT
+               nome TEXT,
+               email TEXT,
+               'num telefone' TEXT,
+               profissao TEXT
                )
-               ''')
+''')
+
+
+cursor.execute("INSERT INTO Usuarios (nome, email, profissao)VALUES (?, ?, ?)",
+               ('João Pereira Pinto', 'Joao_programmingJava@uol.com', 'Programador Full-Stack'))
 
 conexao.commit()
+
